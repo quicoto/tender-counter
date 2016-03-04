@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--  Mobile viewport scale | Disable user zooming as the layout is optimised -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Tender Calculator</title>
+	<link href='https://fonts.googleapis.com/css?family=Bangers|Oswald:400,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="dist/css/tender-pack.min.css">
+	<meta name="theme-color" content="#CA322F">
+</head>
+<body class="bg-primary">
+
+
+<section class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+			<h1 class="text-center">How many tenders can I buy?</h1>
+
+			<form class="custom-form" id="calculate-form">
+			    <div class="form-group">
+			        <label for="investment">Investment in euros</label>
+			        <input type="number" class="form-control text-center" id="investment" placeholder="10" />
+			    </div>
+			    <button id="calculate" type="button" class="btn btn-lg btn-danger btn-block">Calculate</button>
+			</form>
+
+			<div id="tender-image" class="hidden">
+				<h2 id="tender-image-text" class="text-center"><span></span> tenders</h2>
+				<!-- /#tender-image-text -->
+
+				<p>
+					<img id="tenders" src="dist/img/tenders.jpg" alt="Tenders" class="img-responsive">
+
+					<img id="more-tenders" src="dist/img/more-tenders.jpg" alt="More Tenders" class="img-responsive hidden">
+				</p>
+
+				<button id="back" type="button" class="btn btn-danger btn-block">Back to the calculator</button>
+			</div>
+			<!-- /.tender-image -->
+		</div>
+		<!-- /.col-xs-12 -->
+	</div>
+	<!-- /.row -->
+
+</section>
+
+<script src="dist/js/tender-pack.min.js"></script>
+
+</body>
+</html>
+

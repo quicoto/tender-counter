@@ -3,7 +3,6 @@ $(document).ready(function() {
 	// Focus
 	$('#investment').focus();
 
-
 	function calculateTenderness (){
   	  var tenderPrice = 2,
   		  tenderQty = 6,

@@ -271,7 +271,7 @@ module.exports = function(grunt) {
 
 	// Different Tasks that can be run
 	// grunt
-	grunt.registerTask('default', ['clean:all', 'css_compile', 'cssmin_regular', 'js_compile', 'uglify:js', 'copy', 'compile_html', 'imagemin', 'clean:productionCSS', 'clean:productionJS']);
+	grunt.registerTask('default', ['clean:all', 'css_compile', 'cssmin_regular', 'js_compile', 'uglify:js', 'copy', 'compile_html', 'imagemin', 'clean:productionCSS', 'clean:productionJS', 'copy:index']);
 	// grunt dev
-	grunt.registerTask('dev', ['default', 'copy:index', 'connect:livereload', 'open', 'watch']);
+	grunt.registerTask('dev', ['default', 'connect:livereload', 'open', 'watch']);
 };
