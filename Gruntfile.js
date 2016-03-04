@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: 'source/js/**/*.js',
-				tasks: ['js_compile']
+				tasks: ['js_compile', 'uglify:js']
 			},
 			grunt_conf: {
 				files: 'Gruntfile.js',
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
 
 			js_vendor: {
 				src : [
-					'source/js/vendor/angular*.js',
+					'source/js/vendor/jquery*.js',
 					'source/js/vendor/other*/*.js'
 				],
 				dest : 'dist/js/tender-vendor.js',

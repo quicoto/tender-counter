@@ -1,3 +1,30 @@
 .custom-form {
-    
+    input[type="number"] {
+        height: rem(10);
+        font-size: rem(5);
+
+    }
+
+    label {
+        font-size: rem(2);
+    }
+
+    .btn {
+        &:focus {
+            outline: none;
+        }
+    }
+
+
+}
+
+.container {    
+    h1,
+    h2 {
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        color: rgb(252, 255, 52);
+    }
 }

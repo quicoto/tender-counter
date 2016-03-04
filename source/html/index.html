@@ -3,17 +3,31 @@
 {% include "includes/_head.html" %}
 
 <section class="container">
-	<h1>How many tenders can I buy?</h1>
-
 	<div class="row">
-		<div class="col-xs-12">
-			<form class="custom-form">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+			<h1 class="text-center">How many tenders can I buy?</h1>
+
+			<form class="custom-form" id="calculate-form">
 			    <div class="form-group">
-			        <label for="euros">Investment</label>
-			        <input type="number" class="form-control" id="euros" placeholder="10">
+			        <label for="investment">Investment in euros</label>
+			        <input type="number" class="form-control text-center" id="investment" placeholder="10">
 			    </div>
-			    <button type="button" class="btn btn-default">Calculate</button>
+			    <button id="calculate" type="button" class="btn btn-lg btn-danger btn-block">Calculate</button>
 			</form>
+
+			<div id="tender-image" class="hidden">
+				<h2 id="tender-image-text" class="text-center"><span></span> tenders</h2>
+				<!-- /#tender-image-text -->
+
+				<p>
+					<img id="tenders" src="dist/img/tenders.jpg" alt="Tenders" class="img-responsive">
+
+					<img id="more-tenders" src="dist/img/more-tenders.jpg" alt="More Tenders" class="img-responsive hidden">
+				</p>
+
+				<button id="back" type="button" class="btn btn-danger btn-block">Back to the calculator</button>
+			</div>
+			<!-- /.tender-image -->
 		</div>
 		<!-- /.col-xs-12 -->
 	</div>
