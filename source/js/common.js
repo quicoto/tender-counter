@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	function calculateTenderness (){
   	  var tenderPrice = 2,
-  		  tenderQty = 6,
+  		  tenderQty = 7,
   		  investment = document.getElementById("investment").value;
 
   	  var totalTenders = (investment / tenderPrice) * tenderQty;
