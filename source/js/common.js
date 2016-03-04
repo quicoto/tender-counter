@@ -15,7 +15,7 @@ $(document).ready(function() {
 		  $('#more-tenders').removeClass('hidden');
 	  }
 
-	  $('#tender-image-text span').text(totalTenders);
+	  $('#tender-image-text span').text(numberWithDots(totalTenders));
 	  $('#tender-image').removeClass('hidden');
 	  $('#calculate-form').addClass('hidden');
 
@@ -42,5 +42,9 @@ $(document).ready(function() {
 
 		$('#investment').focus();
 	});
+
+	function numberWithDots(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+	}
 
 });
