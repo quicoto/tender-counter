@@ -23,11 +23,11 @@ module.exports = function(grunt) {
 		watch: {
 			html: {
 				files: ['source/html/*.html', 'source/html/*/*.html'],
-				tasks: ['clean:html', 'compile_html']
+				tasks: ['clean:html', 'clean:index', 'compile_html', 'copy:index']
 			},
 			css: {
 				files: ['source/sass/**/*.{scss,sass}', 'source/img/sprite/*', ],
-				tasks: 'css_compile'
+				tasks: ['css_compile', 'cssmin_regular']
 			},
 			js: {
 				files: 'source/js/**/*.js',
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
 		concat: {
 			css_main: {
 				src: ['source/css/main.css'],
-				dest: 'dist/css/XXX-main.css'
+				dest: 'dist/css/tender-main.css'
 			},
 
 			css_bootstrap: {
@@ -81,66 +81,39 @@ module.exports = function(grunt) {
 					'source/css/vendor/font-awesome*.css',
 					'source/css/vendor/bootstrap*/*.css'
 				],
-				dest: 'dist/css/XXX-vendor.css'
-			},
-
-			css_ie8: {
-				src: [
-					'source/css/ie8.css'
-				],
-				dest: 'dist/css/XXX-ie8.css'
+				dest: 'dist/css/tender-vendor.css'
 			},
 
 			css_pack: {
 			    src: [
-			        'dist/css/XXX-vendor.css',
-					'dist/css/XXX-main.css',
+			        'dist/css/tender-vendor.css',
+					'dist/css/tender-main.css',
 			    ],
-			    dest: 'dist/css/XXX-pack.css'
+			    dest: 'dist/css/tender-pack.css'
 			},
 
 			js_main: {
 				src : ['source/js/components/*.js', 'source/js/common.js'],
-				dest : 'dist/js/XXX-app.js'
+				dest : 'dist/js/tender-app.js'
 			},
 
 			js_vendor: {
 				src : [
-					'source/js/vendor/jquery*.js',
-					'source/js/vendor/bootstrap*/*.js',
+					'source/js/vendor/angular*.js',
 					'source/js/vendor/other*/*.js'
 				],
-				dest : 'dist/js/XXX-vendor.js',
+				dest : 'dist/js/tender-vendor.js',
 				separator: ';'
 			},
 
 			js_debug_true: {
-				src : ['source/js/__debug_true.js', 'dist/js/XXX-vendor.js', 'dist/js/XXX-app.js'],
-				dest : 'dist/js/XXX-pack-debug.js'
+				src : ['source/js/__debug_true.js', 'dist/js/tender-vendor.js', 'dist/js/tender-app.js'],
+				dest : 'dist/js/tender-pack-debug.js'
 			},
 
 			js_debug_false: {
-				src : ['source/js/__debug_false.js', 'dist/js/XXX-vendor.js', 'dist/js/XXX-app.js'],
-				dest : 'dist/js/XXX-pack.js'
-			},
-
-			js_ie8: {
-				src : [
-					'source/js/ie89.js'
-					],
-				dest : 'dist/js/XXX-ie89.js'
-			},
-		},
-
-		stripmq: {
-			options: {
-				width: 1025
-			},
-
-			ie8: {
-				files: {
-					'dist/css/XXX-ie8.css': ['dist/css/XXX-ie8.css'],
-				}
+				src : ['source/js/__debug_false.js', 'dist/js/tender-vendor.js', 'dist/js/tender-app.js'],
+				dest : 'dist/js/tender-pack.js'
 			}
 		},
 
@@ -154,23 +127,18 @@ module.exports = function(grunt) {
 
 		cssmin: {
 			vendor: {
-				src: 'dist/css/XXX-vendor.css',
-				dest: 'dist/css/XXX-vendor.min.css'
+				src: 'dist/css/tender-vendor.css',
+				dest: 'dist/css/tender-vendor.min.css'
 			},
 
 			main: {
-				src: 'dist/css/XXX-main.css',
-				dest: 'dist/css/XXX-main.min.css'
-			},
-
-			ie8: {
-				src: 'dist/css/XXX-ie8.css',
-				dest: 'dist/css/XXX-ie8.min.css'
+				src: 'dist/css/tender-main.css',
+				dest: 'dist/css/tender-main.min.css'
 			},
 
 			pack: {
-				src: 'dist/css/XXX-pack.css',
-				dest: 'dist/css/XXX-pack.min.css'
+				src: 'dist/css/tender-pack.css',
+				dest: 'dist/css/tender-pack.min.css'
 			}
 		},
 
@@ -187,9 +155,9 @@ module.exports = function(grunt) {
 
 			js: {
 				files: {
-					'dist/js/XXX-app.min.js': ['dist/js/XXX-app.js'],
-					'dist/js/XXX-vendor.min.js': ['dist/js/XXX-vendor.js'],
-					'dist/js/XXX-pack.min.js': ['dist/js/XXX-pack.js']
+					'dist/js/tender-app.min.js': ['dist/js/tender-app.js'],
+					'dist/js/tender-vendor.min.js': ['dist/js/tender-vendor.js'],
+					'dist/js/tender-pack.min.js': ['dist/js/tender-pack.js']
 				}
 			}
 		},
@@ -214,7 +182,11 @@ module.exports = function(grunt) {
 
 		clean: {
 			all: {
-				src: ['html/*', 'dist/**', 'source/css/**']
+				src: ['html/*', 'dist/**', 'source/css/**', 'index.html']
+			},
+
+            index: {
+				src: ['index.html']
 			},
 
 			html: {
@@ -222,11 +194,11 @@ module.exports = function(grunt) {
 			},
 
             productionCSS: {
-                src: ["dist/css/*.css", "!dist/css/*.min.css", "dist/css/XXX-vendor.min.css", "dist/css/XXX-main.min.css"]
+                src: ["dist/css/*.css", "!dist/css/*.min.css", "dist/css/tender-vendor.min.css", "dist/css/tender-main.min.css"]
             },
 
             productionJS: {
-                src: ["dist/js/*.js", "!dist/js/*.min.js", "dist/js/XXX-main.min.js", "dist/js/XXX-vendor.min.js", "dist/js/XXX-app.min.js"]
+                src: ["dist/js/*.js", "!dist/js/*.min.js", "dist/js/tender-main.min.js", "dist/js/tender-vendor.min.js", "dist/js/tender-app.min.js"]
             }
 		},
 
@@ -250,7 +222,14 @@ module.exports = function(grunt) {
 				cwd: 'source/other',
 				src: '*',
 				dest: 'dist/other'
-			}
+			},
+
+            index: {
+				expand: true,
+				cwd: 'html/',
+				src: ['**'],
+				dest: ''
+			},
 		},
 
 		jinja: {
@@ -282,11 +261,11 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask('cssmin_regular', ['cssmin:main', 'cssmin:vendor', 'cssmin:ie8', 'cssmin:pack']);
+	grunt.registerTask('cssmin_regular', ['cssmin:main', 'cssmin:vendor', 'cssmin:pack']);
 
-	grunt.registerTask('css_compile', ['compass:dev', 'concat:css_bootstrap', 'concat:css_main', 'cmq', 'concat:css_ie8','concat:css_pack', 'stripmq:ie8']);
+	grunt.registerTask('css_compile', ['compass:dev', 'concat:css_bootstrap', 'concat:css_main', 'cmq', 'concat:css_pack']);
 
-	grunt.registerTask('js_compile', ['jshint', 'concat:js_main', 'concat:js_vendor', 'concat:js_debug_true', 'concat:js_debug_false', 'concat:js_ie8']);
+	grunt.registerTask('js_compile', ['jshint', 'concat:js_main', 'concat:js_vendor', 'concat:js_debug_true', 'concat:js_debug_false']);
 
 	grunt.registerTask('compile_html', ['jinja']);
 
@@ -294,5 +273,5 @@ module.exports = function(grunt) {
 	// grunt
 	grunt.registerTask('default', ['clean:all', 'css_compile', 'cssmin_regular', 'js_compile', 'uglify:js', 'copy', 'compile_html', 'imagemin', 'clean:productionCSS', 'clean:productionJS']);
 	// grunt dev
-	grunt.registerTask('dev', ['clean:all', 'css_compile', 'js_compile', 'copy', 'compile_html', 'connect:livereload', 'open', 'watch']);
+	grunt.registerTask('dev', ['default', 'copy:index', 'connect:livereload', 'open', 'watch']);
 };
