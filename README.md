@@ -2,6 +2,8 @@ Tender Counter
 ======
 How many tenders can you buy?
 
+https://quicoto.github.io/tender-counter/
+
 MIT License
 ======
 
